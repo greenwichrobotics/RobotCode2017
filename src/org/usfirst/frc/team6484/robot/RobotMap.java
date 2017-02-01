@@ -19,6 +19,10 @@ public class RobotMap {
 	
 	public static int joystickPort0 = 0;
 	
+	// *********************************************************
+	// Gyro
+	 public static final double kP = 0.007;
+	
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

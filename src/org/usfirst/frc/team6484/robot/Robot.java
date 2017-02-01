@@ -32,6 +32,7 @@ public class Robot extends IterativeRobot {
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
 	teleopDrive myTeleopDrive; 
+	Turn myTurn;
 
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -44,6 +45,7 @@ public class Robot extends IterativeRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		myTeleopDrive = new teleopDrive();
+		myTurn = new Turn();
 		
 		
 //		CameraServer.getInstance().startAutomaticCapture();
@@ -57,6 +59,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
+		myTurn.cancel();
 
 	}
 
@@ -108,8 +111,10 @@ public class Robot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand != null)
 			autonomousCommand.cancel();
-		if (myTeleopDrive != null)
-			myTeleopDrive.start();
+//		if (myTeleopDrive != null)
+//			myTeleopDrive.start();
+		if (myTurn != null)
+			myTurn.start();
 		
 	}
 
