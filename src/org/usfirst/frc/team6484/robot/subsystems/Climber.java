@@ -14,7 +14,9 @@ public class Climber extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	
-    	
+    	/*wait until rope is in position and button is pushed
+    	*engage motor to catch rope and initiate climbing sequence
+    	*stop once reaches top (time is set)*/
     }
 }
 
