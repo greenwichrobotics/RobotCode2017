@@ -16,10 +16,15 @@ public class OI {
 	// number it is.
 	 public static Joystick driveStick;
 	 
-	 public OI(){
-		 driveStick = new Joystick(RobotMap.joystickPort0);
-	 }
+//	 public OI(){
+//		 driveStick = new Joystick(RobotMap.joystickPort0);
+//	 }
 	// Button button = new JoystickButton(stick, buttonNumber);
+
+	public static void init() {
+		driveStick = new Joystick(RobotMap.joystickPort0);
+		
+	}
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to

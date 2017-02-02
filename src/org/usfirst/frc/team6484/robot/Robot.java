@@ -40,12 +40,10 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void robotInit() {
-		oi = new OI();
-		chooser.addDefault("Default Auto", new ExampleCommand());
+		CommandBase.init();
+		
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
-		myTeleopDrive = new teleopDrive();
-		myTurn = new Turn();
 		
 		
 //		CameraServer.getInstance().startAutomaticCapture();
@@ -59,7 +57,7 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		myTurn.cancel();
+		
 
 	}
 
@@ -113,8 +111,7 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 //		if (myTeleopDrive != null)
 //			myTeleopDrive.start();
-		if (myTurn != null)
-			myTurn.start();
+		 Scheduler.getInstance().add(new ArcadeDrive());
 		
 	}
 

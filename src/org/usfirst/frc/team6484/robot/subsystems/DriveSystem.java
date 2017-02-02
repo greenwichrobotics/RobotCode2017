@@ -17,6 +17,7 @@ import org.usfirst.frc.team6484.robot.commands.teleopDrive;
 public class DriveSystem extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
+	private static DriveSystem instance;
 	public static RobotDrive myDrive;
 	private static OI oi = new OI();
 	private static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
