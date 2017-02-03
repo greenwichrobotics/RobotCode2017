@@ -20,6 +20,10 @@ public class RobotMap {
 	public static int joystickPort0 = 0;
 	
 	// *********************************************************
+	// Xbox Controller
+	public static int XboxControllerPort = 1;
+	
+	// *********************************************************
 	// Gyro
 	 public static final double kP = 0.007;
 	

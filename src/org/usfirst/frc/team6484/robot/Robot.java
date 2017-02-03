@@ -12,7 +12,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team6484.robot.commands.*;
-import org.usfirst.frc.team6484.robot.commands.teleopDrive;
+//import org.usfirst.frc.team6484.robot.commands.teleopDrive;
 import org.usfirst.frc.team6484.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team6484.robot.subsystems.ExampleSubsystem;
 
@@ -26,13 +26,12 @@ import org.usfirst.frc.team6484.robot.subsystems.ExampleSubsystem;
 public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
-	public static final DriveSystem driveSystem = new DriveSystem();
 	public static OI oi;
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
-	teleopDrive myTeleopDrive; 
-	Turn myTurn;
+//	teleopDrive myTeleopDrive; 
+//	Turn myTurn;
 
 	/**
 	 * This function is run when the robot is first started up and should be

@@ -8,7 +8,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class DriveTrain extends Subsystem {
+public class DriveTrain extends SubsystemBase {
 	private static DriveTrain instance;
 	 private static RobotDrive robotDrive;
 
@@ -35,5 +35,10 @@ public class DriveTrain extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+	@Override
+	public String getConsoleIdentity() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 
