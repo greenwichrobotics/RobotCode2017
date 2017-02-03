@@ -14,11 +14,6 @@ public class FuelIntake extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	
-    	//hey there
-    	//how ya doing
-    	//cash me ousside
-    	//HOW BOW DAH
-    	
     	/*wait until button is pressed, then ingage motors to catch balls
     	 *when button is pushed, dis-engage motors*/
     }

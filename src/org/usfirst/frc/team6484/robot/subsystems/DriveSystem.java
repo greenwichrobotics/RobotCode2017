@@ -21,7 +21,19 @@ public class DriveSystem extends Subsystem {
 	public static RobotDrive myDrive;
 	private static OI oi = new OI();
 	private static ADXRS450_Gyro gyro = new ADXRS450_Gyro();
+<<<<<<< HEAD
 
+=======
+	
+	/*							NOTES / IDEAS
+	 * BadRobot only corrects direction of driving if angle is off by 3 or more degrees
+	 * 
+	 * 
+	 * 
+	 */
+	
+	
+>>>>>>> 9e242ef2a0bc3b873948faeb3d0b8abd5642180c
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
