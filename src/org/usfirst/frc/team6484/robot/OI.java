@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 import org.usfirst.frc.team6484.robot.commands.ExampleCommand;
+import org.usfirst.frc.team6484.robot.control.XboxMap;
 import org.usfirst.frc.team6484.robot.commands.*;
 
 /**
@@ -19,14 +20,14 @@ public class OI {
 	// You create one by telling it which joystick it's on and which button
 	// number it is.
 //	 public static Joystick driveStick;
-	 public static XboxController driveStick;
+	 public static XboxMap driveStick;
 	 public double forwardValue;
 	 public static boolean isXbox;
 	 static Button button;
 	 
 	 public static void init() {
 			
-			driveStick = new XboxController(RobotMap.XboxControllerPort);
+			driveStick = new XboxMap(RobotMap.XboxControllerPort);
 			button = new JoystickButton(driveStick, 0);
 		}
 	 public OI(){
