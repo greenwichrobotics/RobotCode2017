@@ -8,11 +8,16 @@ package org.usfirst.frc.team6484.robot;
  */
 public class RobotMap {
 	// *********************************************************
-	// Motors
+	// Drive Motors
 	public static int rightMotor1 = 0;
 	public static int rightMotor2 = 1;
 	public static int leftMotor1 = 2;
 	public static int leftMotor2 = 3;
+	
+	// *********************************************************
+	// Intake Motors
+	public static int intakeMotor1 = 5;
+	public static int intakeMotor2 = 6;
 	
 	// *********************************************************
 	// Joystick

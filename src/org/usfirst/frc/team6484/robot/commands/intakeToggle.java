@@ -1,47 +1,43 @@
 package org.usfirst.frc.team6484.robot.commands;
 
-import org.usfirst.frc.team6484.robot.OI;
-
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
  *
  */
-public class ArcadeDrive extends CommandBase {
-
-    public ArcadeDrive() {
+public class intakeToggle extends CommandBase {
+	private boolean isFinished;
+    public intakeToggle() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires((Subsystem) driveTrain);
+    	requires( (Subsystem) fuelIntake);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
     	try{
-    	driveTrain.arcadeDrive(0.0,0.0);
-    	}catch(Exception ex){
-    		String temp = ex.getMessage();
-    		}
-    	}
+    		isFinished = false;
+        	fuelIntake.setMotor(0.0);
+        	}catch(Exception ex){
+        		String temp = ex.getMessage();
+        		}
+        	}
+    
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-//    	driveTrain.arcadeDrive(OI.driveStick.getY(), -OI.driveStick.getX());
-
-		if (OI.driveStick.getRawAxis(3)  != 0.0 && OI.driveStick.getRawAxis(2) == 0.0){
-	    	driveTrain.arcadeDrive(OI.driveStick.getRawAxis(3), OI.driveStick.getRawAxis(0));
-	    	}else if (OI.driveStick.getRawAxis(2)  != 0.0 && OI.driveStick.getRawAxis(3) == 0.0) {
-	    		driveTrain.arcadeDrive(-OI.driveStick.getRawAxis(2), OI.driveStick.getRawAxis(0));
-	    	} else {
-	    		driveTrain.arcadeDrive(0.0, OI.driveStick.getRawAxis(0));
-	    	}
-    	
+    	if (fuelIntake.getMotor()){
+    		fuelIntake.setMotor(1.0);
+    	} else {
+    		fuelIntake.setMotor(0.0);
+    	}
+    	isFinished = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isFinished;
     }
 
     // Called once after isFinished returns true

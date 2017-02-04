@@ -3,7 +3,10 @@ package org.usfirst.frc.team6484.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
+
 import org.usfirst.frc.team6484.robot.commands.ExampleCommand;
+import org.usfirst.frc.team6484.robot.commands.*;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -15,35 +18,23 @@ public class OI {
 	//// joystick.
 	// You create one by telling it which joystick it's on and which button
 	// number it is.
-	 public static Object driveStick;
-//	 public static XboxController xbox;
+//	 public static Joystick driveStick;
+	 public static XboxController driveStick;
 	 public double forwardValue;
 	 public static boolean isXbox;
+	 static Button button;
 	 
-//	 public OI(){
+	 public static void init() {
+			
+			driveStick = new XboxController(RobotMap.XboxControllerPort);
+			button = new JoystickButton(driveStick, 0);
+		}
+	 public OI(){
 //		 driveStick = new Joystick(RobotMap.joystickPort0);
 //	 }
 	// Button button = new JoystickButton(stick, buttonNumber);
 
-	public static void init() {
-		isXbox  = true;
-		if (isXbox)
-			driveStick = new XboxController(RobotMap.XboxControllerPort);
-		else
-			driveStick = new Joystick(RobotMap.joystickPort0);
-		
-		
-		
-		
-		
-		if (OI.xbox.getRawAxis(3)  != 0.0 && OI.xbox.getRawAxis(2) == 0.0){
-	    	System.out.println(OI.xbox.getRawAxis(3));
-	    	}else if (OI.xbox.getRawAxis(2)  != 0.0 && OI.xbox.getRawAxis(3) == 0.0) {
-	    		System.out.println(-OI.xbox.getRawAxis(2));
-	    	} else {
-	    		System.out.println(0.0);
-	    	}
-	}
+	
 
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
@@ -56,6 +47,7 @@ public class OI {
 	// Start the command when the button is pressed and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenPressed(new ExampleCommand());
+		 button.whenPressed(new intakeToggle());
 
 	// Run the command while the button is being held down and interrupt it once
 	// the button is released.
@@ -64,4 +56,5 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+}
 }
