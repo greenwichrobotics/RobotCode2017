@@ -20,6 +20,11 @@ public class RobotMap {
 	public static int intakeMotor2 = 6;
 	
 	// *********************************************************
+	//Shooter Motors
+	public static int shooterMotor = 7;
+	public static int feederMotor = 8;
+	
+	// *********************************************************
 	// Joystick
 	
 	public static int joystickPort0 = 0;
@@ -27,6 +32,7 @@ public class RobotMap {
 	// *********************************************************
 	// Xbox Controller
 	public static int XboxControllerPort = 1;
+	public static int ShooterControllerPort = 2;
 	
 	// *********************************************************
 	// Gyro

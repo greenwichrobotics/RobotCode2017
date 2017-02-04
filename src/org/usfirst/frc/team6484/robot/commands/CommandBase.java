@@ -12,6 +12,7 @@ public abstract class CommandBase extends Command {
 //	Declare all Subsystems here
 	public static DriveTrain driveTrain;
 	public static FuelIntake fuelIntake;
+	public static Shooter Shooter;
 	
    
 
@@ -22,6 +23,7 @@ public abstract class CommandBase extends Command {
 //    Initialize subsystems here
         driveTrain = driveTrain.getInstance();
         fuelIntake = FuelIntake.getInstance();
+        Shooter = Shooter.getInstance();
     }
     
     public CommandBase(String name) {

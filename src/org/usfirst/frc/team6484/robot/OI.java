@@ -21,6 +21,7 @@ public class OI {
 	// number it is.
 //	 public static Joystick driveStick;
 	 public static XboxMap driveStick;
+	 public static XboxMap shooterStick;
 	 public double forwardValue;
 	 public static boolean isXbox;
 	 static Button button;
@@ -28,6 +29,7 @@ public class OI {
 	 public static void init() {
 			
 			driveStick = new XboxMap(RobotMap.XboxControllerPort);
+			shooterStick = new XboxMap(RobotMap.ShooterControllerPort);
 			button = new JoystickButton(driveStick, 0);
 		}
 	 public OI(){

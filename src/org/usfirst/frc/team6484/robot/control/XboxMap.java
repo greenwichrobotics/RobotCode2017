@@ -97,23 +97,21 @@ public class XboxMap extends Joystick{
 	    
 	    public double getTriggerValue() {
 	    	double value = 0.0;
-	    	if (OI.driveStick.getRawAxis(RIGHT_TRIGGER)  != 0.0 && OI.driveStick.getRawAxis(LEFT_TRIGGER) == 0.0){
+	    	if (this.getRawAxis(RIGHT_TRIGGER)  != 0.0 && this.getRawAxis(LEFT_TRIGGER) == 0.0){
 	    		value = deadzone(this.getRawAxis(RIGHT_TRIGGER));
-		    	}else if (OI.driveStick.getRawAxis(LEFT_TRIGGER)  != 0.0 && OI.driveStick.getRawAxis(RIGHT_TRIGGER) == 0.0) {
+		    	}else if (this.getRawAxis(LEFT_TRIGGER)  != 0.0 && this.getRawAxis(RIGHT_TRIGGER) == 0.0) {
 		    		value = -deadzone(this.getRawAxis(LEFT_TRIGGER));
 		    	}
 	    	return value;
-		    	
-	    	
 	    }
 //	    public double shiftValue(double value){
 //	    	return ((value + 1) /2);
 //	    }
 //	    public double getTriggerValue() {
 //	    	double value = 0.0;
-//	    	if (shiftValue(OI.driveStick.getRawAxis(RIGHT_TRIGGER))  != 0.0 && shiftValue(OI.driveStick.getRawAxis(LEFT_TRIGGER)) == 0.0){
+//	    	if (shiftValue(this.getRawAxis(RIGHT_TRIGGER))  != 0.0 && shiftValue(this.getRawAxis(LEFT_TRIGGER)) == 0.0){
 //	    		value = deadzone(shiftValue(this.getRawAxis(RIGHT_TRIGGER)));
-//		    	}else if (shiftValue(OI.driveStick.getRawAxis(LEFT_TRIGGER))  != 0.0 && shiftValue(OI.driveStick.getRawAxis(RIGHT_TRIGGER)) == 0.0) {
+//		    	}else if (shiftValue(this.getRawAxis(LEFT_TRIGGER))  != 0.0 && shiftValue(this.getRawAxis(RIGHT_TRIGGER)) == 0.0) {
 //		    		value = -deadzone(shiftValue(this.getRawAxis(LEFT_TRIGGER)));
 //		    	}
 //	    	return value;
@@ -121,7 +119,13 @@ public class XboxMap extends Joystick{
 //	    	
 //	    }
 
-	    
+	    public double getRightTrigger() {
+	    	return this.getRawAxis(RIGHT_TRIGGER);
+	    }
+
+	    public double getLeftTrigger() {
+	    	return this.getRawAxis(LEFT_TRIGGER);
+	    }
 	    
 	    public void checkControllerPorts()
 	    {
