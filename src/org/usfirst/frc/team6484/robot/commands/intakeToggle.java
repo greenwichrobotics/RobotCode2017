@@ -1,5 +1,8 @@
 package org.usfirst.frc.team6484.robot.commands;
 
+import org.usfirst.frc.team6484.robot.OI;
+
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -7,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class intakeToggle extends CommandBase {
-	private boolean isFinished;
+	private boolean isRunning;
     public intakeToggle() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -17,7 +20,7 @@ public class intakeToggle extends CommandBase {
     // Called just before this Command runs the first time
     protected void initialize() {
     	try{
-    		isFinished = false;
+    		isRunning = false;
         	fuelIntake.setMotor(0.0);
         	}catch(Exception ex){
         		String temp = ex.getMessage();
@@ -27,17 +30,24 @@ public class intakeToggle extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (fuelIntake.getMotor()){
+    	if (OI.shooterStick.isAButtonPressed()){
+    		if (!isRunning){
     		fuelIntake.setMotor(1.0);
-    	} else {
-    		fuelIntake.setMotor(0.0);
+    		isRunning = true;
+    		Timer.delay(.5);
+    		}else{
+    			fuelIntake.setMotor(0.0);
+    			isRunning = false;
+    			Timer.delay(.5);
+    		}
     	}
-    	isFinished = true;
+    	
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return isFinished;
+        return false;
     }
 
     // Called once after isFinished returns true

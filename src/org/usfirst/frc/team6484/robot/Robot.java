@@ -15,6 +15,7 @@ import org.usfirst.frc.team6484.robot.commands.*;
 //import org.usfirst.frc.team6484.robot.commands.teleopDrive;
 //import org.usfirst.frc.team6484.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team6484.robot.subsystems.ExampleSubsystem;
+//import org.usfirst.frc.team6484.robot.subsystems.Shooter;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -111,6 +112,8 @@ public class Robot extends IterativeRobot {
 //		if (myTeleopDrive != null)
 //			myTeleopDrive.start();
 		 Scheduler.getInstance().add(new ArcadeDrive());
+		 Scheduler.getInstance().add(new shooter());
+		 Scheduler.getInstance().add(new intakeToggle());
 		
 	}
 
