@@ -25,6 +25,10 @@ public class RobotMap {
 	public static int feederMotor = 8;
 	
 	// *********************************************************
+	// Climber
+	public static int climberMotor = 9;
+	
+	// *********************************************************
 	// Joystick
 	
 	public static int joystickPort0 = 0;
