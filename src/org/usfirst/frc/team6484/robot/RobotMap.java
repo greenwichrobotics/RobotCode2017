@@ -23,10 +23,13 @@ public class RobotMap {
 	//Shooter Motors
 	public static int shooterMotor = 7;
 	public static int feederMotor = 8;
+	public static int encoderPortA = 0,
+					  encoderPortB = 1;
+			
 	
 	// *********************************************************
 	// Climber
-	public static int climberMotor = 9;
+//	public static int climberMotor = 9;
 	
 	// *********************************************************
 	// Joystick
@@ -41,6 +44,13 @@ public class RobotMap {
 	// *********************************************************
 	// Gyro
 	 public static final double kP = 0.007;
+	 
+	// *********************************************************
+	// Pneumatics
+	 
+	 public static final int CompressorPort = 0,
+			 				 solenoidPort1 = 0, 
+			 				 solenoidPort2 = 1;
 	
 
 	// If you are using multiple modules, make sure to define both the port

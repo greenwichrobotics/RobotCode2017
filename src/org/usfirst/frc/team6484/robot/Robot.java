@@ -2,6 +2,7 @@
 package org.usfirst.frc.team6484.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 //import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.RobotDrive;
@@ -28,6 +29,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
+	Compressor c = new Compressor(RobotMap.CompressorPort);
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -45,6 +47,8 @@ public class Robot extends IterativeRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", chooser);
 		
+		// Start Compressor
+		c.setClosedLoopControl(true);
 		
 //		CameraServer.getInstance().startAutomaticCapture();
 		System.out.println("hello");

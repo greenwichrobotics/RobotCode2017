@@ -2,6 +2,7 @@ package org.usfirst.frc.team6484.robot.commands;
 
 import org.usfirst.frc.team6484.robot.OI;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -29,6 +30,12 @@ public class shooter extends CommandBase {
     protected void execute() {
     	
     		Shooter.setShooterMotor(OI.shooterStick.getLeftTrigger());
+    		// Feeder motor Code
+    		// if (Shooter.getWheelSpeed() >= 100){
+//    			Shooter.setFeederMotor(1.0);
+//    			Timer.delay(.2);
+//    			Shooter.setFeederMotor(0.0);
+//    }
     }
 
     // Make this return true when this Command no longer needs to run execute()
