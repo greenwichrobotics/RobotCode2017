@@ -28,6 +28,7 @@ public class RobotMap {
 			
 	
 	// *********************************************************
+	
 	// Climber
 //	public static int climberMotor = 9;
 	
@@ -49,8 +50,11 @@ public class RobotMap {
 	// Pneumatics
 	 
 	 public static final int CompressorPort = 0,
-			 				 solenoidPort1 = 0, 
-			 				 solenoidPort2 = 1;
+			 				 armSolenoidPort1 = 0,
+			 				 armSolenoidPort2 = 1,
+			 				 pickupSolenoidPort1 = 2,
+			 				 pickupSolenoidPort2 = 3,
+			 				 climberSolenoidPort = 4;
 	
 
 	// If you are using multiple modules, make sure to define both the port

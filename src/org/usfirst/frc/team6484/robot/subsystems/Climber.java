@@ -6,6 +6,7 @@ import org.usfirst.frc.team6484.robot.control.XboxMap;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.Timer;
@@ -14,7 +15,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class Climber extends Subsystem {
+public class Climber extends SubsystemBase {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
@@ -32,10 +33,9 @@ public class Climber extends Subsystem {
 	 */
 	
 	private static Climber instance;
-	private SpeedController climberMotor1 = new Talon(RobotMap.rightMotor1);
-	private SpeedController climberMotor2 = new Talon(RobotMap.rightMotor2);
-	Compressor c = new Compressor(RobotMap.CompressorPort);
-	DoubleSolenoid solenoid = new DoubleSolenoid(RobotMap.solenoidPort1, RobotMap.solenoidPort2);
+	private SpeedController climberMotor1 = new Talon(RobotMap.leftMotor1);
+	private SpeedController climberMotor2 = new Talon(RobotMap.leftMotor2);
+	Solenoid solenoid = new Solenoid(RobotMap.climberSolenoidPort);
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
@@ -61,14 +61,10 @@ public class Climber extends Subsystem {
 		}
 	}
 	public void openSolenoid(){
-		solenoid.set(DoubleSolenoid.Value.kForward);
-		Timer.delay(1);
-		solenoid.set(DoubleSolenoid.Value.kOff);
+		solenoid.set(true);
 	}
 	public void closeSolenoid(){
-		solenoid.set(DoubleSolenoid.Value.kReverse);
-		Timer.delay(1);
-		solenoid.set(DoubleSolenoid.Value.kOff);
+		solenoid.set(false);
 	}
 	protected void initialize() {
 	}

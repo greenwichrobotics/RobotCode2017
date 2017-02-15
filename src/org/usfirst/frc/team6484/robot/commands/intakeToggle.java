@@ -30,7 +30,7 @@ public class intakeToggle extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (OI.shooterStick.isAButtonPressed()){
+    	if (OI.shooterStick.isYButtonPressed()){
     		if (!isRunning){
     		fuelIntake.setMotor(1.0);
     		isRunning = true;

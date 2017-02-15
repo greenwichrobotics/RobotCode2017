@@ -14,6 +14,7 @@ public abstract class CommandBase extends Command {
 	public static FuelIntake fuelIntake;
 	public static Shooter Shooter;
 	public static Climber Climber;
+	public static GearSubsystem GearSubsystem;
 	
    
 
@@ -26,6 +27,7 @@ public abstract class CommandBase extends Command {
         fuelIntake = FuelIntake.getInstance();
         Shooter = Shooter.getInstance();
         Climber = Climber.getInstance();
+        GearSubsystem = GearSubsystem.getInstance();
     }
     
     public CommandBase(String name) {

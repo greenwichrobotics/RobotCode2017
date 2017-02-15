@@ -31,7 +31,7 @@ public class climber extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (OI.shooterStick.isXButtonPressed()) {
+		if (OI.driveStick.isAButtonPressed()) {
 			if (transformed) {
 				Climber.closeSolenoid();
 				transformed = false;
@@ -42,7 +42,7 @@ public class climber extends CommandBase {
 				Timer.delay(.5);
 			}
 		}
-		if (OI.shooterStick.isYButtonPressed()) {
+		if (OI.driveStick.isBButtonPressed()) {
 			if (!isRunning) {
 				Climber.setClimberMotor(1.0);
 				isRunning = true;
