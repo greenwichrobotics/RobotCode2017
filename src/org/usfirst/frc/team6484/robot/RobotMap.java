@@ -50,10 +50,11 @@ public class RobotMap {
 	// Pneumatics
 	 
 	 public static final int CompressorPort = 0,
-			 				 armSolenoidPort1 = 0,
-			 				 armSolenoidPort2 = 1,
-			 				 pickupSolenoidPort1 = 2,
-			 				 pickupSolenoidPort2 = 3,
+			 				 GearGrabF = 2,
+			 				 GearGrabB = 3,
+			 				 GearLiftU = 4,
+			 				 GearLiftD = 5,
+			 				 GearCamLED = 6,
 			 				 climberSolenoidPort = 4;
 	
 
