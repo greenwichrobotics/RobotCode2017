@@ -44,19 +44,21 @@ public class RobotMap {
 	
 	// *********************************************************
 	// Gyro
-	 public static final double kP = 0.007;
+//	 private static final double kAngleSetpoint = 0.0;
+	 public static final double kP = 0.007;// propotional turning constant
 	 
 	// *********************************************************
 	// Pneumatics
 	 
 	 public static final int CompressorPort = 0,
-			 				 GearGrabF = 2,
-			 				 GearGrabB = 3,
-			 				 GearLiftU = 4,
-			 				 GearLiftD = 5,
-			 				 GearCamLED = 6,
-			 				 climberSolenoidPort = 4;
-	
+			 				 ClimberMain = 0,
+			 				 ClimberLatchF = 1,
+			 				 ClimberLatch = 2,
+			 				 GearGrabF = 3,
+			 				 GearGrabB = 4,
+			 				 GearLiftU = 5,
+			 				 GearLiftD = 6,
+			 				 GearCamLED = 7;
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

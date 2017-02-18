@@ -9,11 +9,13 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class ArcadeDrive extends CommandBase {
-
+	private int direction;
+	private double turn;
     public ArcadeDrive() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires((Subsystem) driveTrain);
+    	requires((Subsystem) Gyro);
     }
 
     // Called just before this Command runs the first time
@@ -28,7 +30,13 @@ public class ArcadeDrive extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 //    	driveTrain.arcadeDrive(OI.driveStick.getY(), -OI.driveStick.getX());
-	    		driveTrain.arcadeDrive(OI.driveStick.getTriggerValue(), -OI.driveStick.getLeftStickX());	
+    	if (OI.driveStick.getX() == 0.0){
+    		direction = (int) Math.copySign(1, OI.driveStick.getTriggerValue());
+    		turn = Gyro.getCompensation(0.0, direction);
+    	}else{
+    		turn = -OI.driveStick.getLeftStickX();
+    	}
+	    driveTrain.arcadeDrive(OI.driveStick.getTriggerValue(), turn);	
 //    	System.out.println(OI.driveStick.getTriggerValue());
     }
 

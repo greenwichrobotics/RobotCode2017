@@ -1,6 +1,6 @@
-package org.usfirst.frc.team6484.robot.commands;
+package org.usfirst.frc.team6484.robot.commands.Autonomous;
 
-import org.usfirst.frc.team6484.robot.OI;
+import org.usfirst.frc.team6484.robot.commands.CommandBase;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
@@ -9,20 +9,23 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 /**
  *
  */
-public class intakeToggle extends CommandBase {
-	private boolean isRunning;
-
-	public intakeToggle() {
+public class centerGear extends CommandBase {
+	Timer time;
+	boolean isFinished;
+	public centerGear() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires((Subsystem) fuelIntake);
+		requires((Subsystem) Gyro);
+		requires((Subsystem) driveTrain);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		try {
-			isRunning = false;
-			fuelIntake.setMotor(0.0);
+			isFinished = false;
+			// isRunning = false;
+			time = new Timer();
+			driveTrain.arcadeDrive(0.0, 0.0);
 		} catch (Exception ex) {
 			String temp = ex.getMessage();
 		}
@@ -30,23 +33,18 @@ public class intakeToggle extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (OI.shooterStick.isYButtonPressed()) {
-			if (!isRunning) {
-				fuelIntake.setMotor(1.0);
-				isRunning = true;
-				Timer.delay(.5);
-			} else {
-				fuelIntake.setMotor(0.0);
-				isRunning = false;
-				Timer.delay(.5);
-			}
+		time.start();
+		if (time.get() <= 2){
+		driveTrain.arcadeDrive(0.2, Gyro.getCompensation(0.0, 1));
+		} else{
+//			vison.track
+			isFinished = Gyro.isCorrect(0.0);
 		}
-
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return false;
+		return isFinished;
 	}
 
 	// Called once after isFinished returns true

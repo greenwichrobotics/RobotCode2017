@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class GearSubsystem extends SubsystemBase {
 	private static GearSubsystem instance;
-	private DoubleSolenoid armSolenoid;
-	private DoubleSolenoid pickupSolenoid;
+	private DoubleSolenoid GearLift;
+	private DoubleSolenoid GearGrab;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 
@@ -32,21 +32,21 @@ public class GearSubsystem extends SubsystemBase {
 	@Override
 	protected void initialize() {
 		// TODO Auto-generated method stub
-		armSolenoid = new DoubleSolenoid(RobotMap.armSolenoidPort1, RobotMap.armSolenoidPort2);
-		pickupSolenoid = new DoubleSolenoid(RobotMap.pickupSolenoidPort1, RobotMap.pickupSolenoidPort2);
+		GearLift = new DoubleSolenoid(RobotMap.GearLiftU, RobotMap.GearLiftD);
+		GearGrab = new DoubleSolenoid(RobotMap.GearGrabF, RobotMap.GearGrabB);
 	}
 	
 	public void liftUpArm(){
-		armSolenoid.set(DoubleSolenoid.Value.kForward);
+		GearLift.set(DoubleSolenoid.Value.kForward);
 	}
 	public void putDownArm(){
-		armSolenoid.set(DoubleSolenoid.Value.kReverse);
+		GearLift.set(DoubleSolenoid.Value.kReverse);
 	}
 	public void grabGear(){
-		pickupSolenoid.set(DoubleSolenoid.Value.kForward);
+		GearGrab.set(DoubleSolenoid.Value.kForward);
 	}
 	public void releaseGear(){
-		pickupSolenoid.set(DoubleSolenoid.Value.kReverse);
+		GearGrab.set(DoubleSolenoid.Value.kReverse);
 	}
 	@Override
 	public String getConsoleIdentity() {

@@ -15,6 +15,7 @@ public abstract class CommandBase extends Command {
 	public static Shooter Shooter;
 	public static Climber Climber;
 	public static GearSubsystem GearSubsystem;
+	public static Gyro Gyro;
 	
    
 
@@ -28,6 +29,7 @@ public abstract class CommandBase extends Command {
         Shooter = Shooter.getInstance();
         Climber = Climber.getInstance();
         GearSubsystem = GearSubsystem.getInstance();
+        Gyro = Gyro.getInstance();
     }
     
     public CommandBase(String name) {

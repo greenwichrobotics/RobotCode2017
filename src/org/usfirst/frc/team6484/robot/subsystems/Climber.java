@@ -35,7 +35,7 @@ public class Climber extends SubsystemBase {
 	private static Climber instance;
 	private SpeedController climberMotor1 = new Talon(RobotMap.leftMotor1);
 	private SpeedController climberMotor2 = new Talon(RobotMap.leftMotor2);
-	Solenoid solenoid = new Solenoid(RobotMap.climberSolenoidPort);
+	Solenoid solenoid = new Solenoid(RobotMap.ClimberMain);
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.

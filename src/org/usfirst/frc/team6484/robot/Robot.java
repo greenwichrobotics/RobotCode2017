@@ -13,6 +13,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team6484.robot.commands.*;
+import org.usfirst.frc.team6484.robot.commands.Autonomous.centerGear;
+import org.usfirst.frc.team6484.robot.commands.Autonomous.leftGear;
+import org.usfirst.frc.team6484.robot.commands.Autonomous.rightGear;
 //import org.usfirst.frc.team6484.robot.commands.teleopDrive;
 //import org.usfirst.frc.team6484.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team6484.robot.subsystems.ExampleSubsystem;
@@ -44,7 +47,10 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		CommandBase.init();
 		
-		// chooser.addObject("My Auto", new MyAutoCommand());
+		// chooser.addObject("My Auto", new MyAutoCommand())
+		chooser.addDefault("Center Gear", new centerGear());
+		chooser.addObject("Left Gear", new leftGear());
+		chooser.addObject("Right Gear", new rightGear());
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		// Start Compressor
@@ -94,7 +100,7 @@ public class Robot extends IterativeRobot {
 
 		// schedule the autonomous command (example)
 		if (autonomousCommand != null)
-			autonomousCommand.start();
+			Scheduler.getInstance().add(autonomousCommand);
 	}
 
 	/**
