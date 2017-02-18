@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class climber extends CommandBase {
 	private boolean isRunning;
 	private boolean transformed;
+	private boolean locked;
 
 	public climber() {
 		// Use requires() here to declare subsystem dependencies
@@ -23,6 +24,7 @@ public class climber extends CommandBase {
 		try {
 			transformed = false;
 			isRunning = false;
+			locked = false;
 			Climber.setClimberMotor(0.0);
 		} catch (Exception ex) {
 			String temp = ex.getMessage();
@@ -31,6 +33,7 @@ public class climber extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		// Lift Robot Up 
 		if (OI.driveStick.isAButtonPressed()) {
 			if (transformed) {
 				Climber.closeSolenoid();
@@ -48,10 +51,23 @@ public class climber extends CommandBase {
 				isRunning = true;
 				Timer.delay(.5);
 			} else {
-				fuelIntake.setMotor(0.0);
+				Climber.setClimberMotor(0.0);
 				isRunning = false;
 				Timer.delay(.5);
 			}
+		}
+		if(OI.driveStick.isXButtonPressed()){
+			if (Climber.getClimberMode()){
+				if (locked){
+					Climber.unLockPin();
+				}else{
+					Climber.lockPin();
+				}
+			}
+		}
+		if(OI.driveStick.isStartButtonPressed()){
+			boolean isTrue = Climber.getClimberMode();
+			Climber.setClimberMode(!isTrue);
 		}
 	}
 

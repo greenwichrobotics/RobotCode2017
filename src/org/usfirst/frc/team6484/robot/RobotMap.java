@@ -53,7 +53,7 @@ public class RobotMap {
 	 public static final int CompressorPort = 0,
 			 				 ClimberMain = 0,
 			 				 ClimberLatchF = 1,
-			 				 ClimberLatch = 2,
+			 				 ClimberLatchB = 2,
 			 				 GearGrabF = 3,
 			 				 GearGrabB = 4,
 			 				 GearLiftU = 5,

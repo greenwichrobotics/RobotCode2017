@@ -36,6 +36,8 @@ public class Climber extends SubsystemBase {
 	private SpeedController climberMotor1 = new Talon(RobotMap.leftMotor1);
 	private SpeedController climberMotor2 = new Talon(RobotMap.leftMotor2);
 	Solenoid solenoid = new Solenoid(RobotMap.ClimberMain);
+	DoubleSolenoid lockSolenoid = new DoubleSolenoid(RobotMap.ClimberLatchF, RobotMap.ClimberLatchB);
+	public boolean ClimberMode = false;
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
@@ -66,9 +68,20 @@ public class Climber extends SubsystemBase {
 	public void closeSolenoid(){
 		solenoid.set(false);
 	}
+	public void lockPin(){
+		lockSolenoid.set(DoubleSolenoid.Value.kForward);
+	}
+	public void unLockPin(){
+		lockSolenoid.set(DoubleSolenoid.Value.kReverse);
+	}
 	protected void initialize() {
 	}
-
+	public void setClimberMode(boolean isTrue){
+		ClimberMode = true;
+	}
+	public boolean getClimberMode(){
+		return ClimberMode;
+	}
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
