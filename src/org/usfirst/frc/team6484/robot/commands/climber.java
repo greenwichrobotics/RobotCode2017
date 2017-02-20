@@ -26,7 +26,7 @@ public class climber extends CommandBase {
 			transformed = false;
 			isRunning = false;
 			locked = false;
-			driveTrain.tankDrive(0.0, 0.0);
+			// driveTrain.tankDrive(0.0, 0.0);
 		} catch (Exception ex) {
 			String temp = ex.getMessage();
 		}
@@ -34,7 +34,7 @@ public class climber extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		// Lift Robot Up 
+		// Lift Robot Up
 		if (OI.driveStick.isAButtonPressed()) {
 			if (transformed) {
 				climber.closeSolenoid();
@@ -46,31 +46,35 @@ public class climber extends CommandBase {
 				Timer.delay(.5);
 			}
 		}
+		// Start Climbing
 		if (OI.driveStick.isBButtonPressed()) {
-			if (!isRunning) {
-				driveTrain.tankDrive(0.3, 0.0);
-				isRunning = true;
-				Timer.delay(.5);
-			} else {
-				driveTrain.tankDrive(0.0, 0.0);
-				isRunning = false;
-				Timer.delay(.5);
+			if (climber.getClimberMode()) {
+				if (!isRunning) {
+					driveTrain.tankDrive(0.3, 0.0);
+					isRunning = true;
+					Timer.delay(.5);
+				} else {
+					driveTrain.tankDrive(0.0, 0.0);
+					isRunning = false;
+					Timer.delay(.5);
+				}
 			}
 		}
-		if(OI.driveStick.isXButtonPressed()){
-			if (climber.getClimberMode()){
-				if (locked){
+		// Lock Pin
+		if (OI.driveStick.isXButtonPressed()) {
+			if (climber.getClimberMode()) {
+				if (locked) {
 					climber.unLockPin();
 					locked = false;
 					Timer.delay(.5);
-				}else{
+				} else {
 					climber.lockPin();
 					locked = true;
 					Timer.delay(.5);
 				}
 			}
 		}
-		if(OI.driveStick.isStartButtonPressed()){
+		if (OI.driveStick.isStartButtonPressed()) {
 			boolean isTrue = climber.getClimberMode();
 			climber.setClimberMode(!isTrue);
 		}
