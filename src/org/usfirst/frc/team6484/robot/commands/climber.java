@@ -16,7 +16,8 @@ public class climber extends CommandBase {
 	public climber() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires((Subsystem) Climber);
+		requires((Subsystem) climber);
+		requires((Subsystem) driveTrain);
 	}
 
 	// Called just before this Command runs the first time
@@ -25,7 +26,7 @@ public class climber extends CommandBase {
 			transformed = false;
 			isRunning = false;
 			locked = false;
-			Climber.setClimberMotor(0.0);
+			driveTrain.tankDrive(0.0, 0.0);
 		} catch (Exception ex) {
 			String temp = ex.getMessage();
 		}
@@ -36,38 +37,42 @@ public class climber extends CommandBase {
 		// Lift Robot Up 
 		if (OI.driveStick.isAButtonPressed()) {
 			if (transformed) {
-				Climber.closeSolenoid();
+				climber.closeSolenoid();
 				transformed = false;
 				Timer.delay(.5);
 			} else {
-				Climber.openSolenoid();
+				climber.openSolenoid();
 				transformed = true;
 				Timer.delay(.5);
 			}
 		}
 		if (OI.driveStick.isBButtonPressed()) {
 			if (!isRunning) {
-				Climber.setClimberMotor(1.0);
+				driveTrain.tankDrive(0.3, 0.0);
 				isRunning = true;
 				Timer.delay(.5);
 			} else {
-				Climber.setClimberMotor(0.0);
+				driveTrain.tankDrive(0.0, 0.0);
 				isRunning = false;
 				Timer.delay(.5);
 			}
 		}
 		if(OI.driveStick.isXButtonPressed()){
-			if (Climber.getClimberMode()){
+			if (climber.getClimberMode()){
 				if (locked){
-					Climber.unLockPin();
+					climber.unLockPin();
+					locked = false;
+					Timer.delay(.5);
 				}else{
-					Climber.lockPin();
+					climber.lockPin();
+					locked = true;
+					Timer.delay(.5);
 				}
 			}
 		}
 		if(OI.driveStick.isStartButtonPressed()){
-			boolean isTrue = Climber.getClimberMode();
-			Climber.setClimberMode(!isTrue);
+			boolean isTrue = climber.getClimberMode();
+			climber.setClimberMode(!isTrue);
 		}
 	}
 

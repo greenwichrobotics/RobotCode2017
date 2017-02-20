@@ -28,6 +28,9 @@ public class DriveTrain extends SubsystemBase {
     	robotDrive.arcadeDrive(forwardValue, rotateValue);
     	
     }
+    public void tankDrive(double leftValue, double rightValue){
+    	robotDrive.tankDrive(leftValue, rightValue);
+    }
     protected void initialize(){
     	robotDrive = new RobotDrive(RobotMap.rightMotor1, RobotMap.rightMotor2, RobotMap.leftMotor1, RobotMap.leftMotor2);
     }

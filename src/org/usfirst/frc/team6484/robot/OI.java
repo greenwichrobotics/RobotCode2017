@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
-import org.usfirst.frc.team6484.robot.commands.ExampleCommand;
+
 import org.usfirst.frc.team6484.robot.control.XboxMap;
 import org.usfirst.frc.team6484.robot.commands.*;
 

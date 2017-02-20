@@ -13,7 +13,7 @@ public abstract class CommandBase extends Command {
 	public static DriveTrain driveTrain;
 	public static FuelIntake fuelIntake;
 	public static Shooter Shooter;
-	public static Climber Climber;
+	public static Climber climber;
 	public static GearSubsystem GearSubsystem;
 	public static Gyro Gyro;
 	
@@ -24,12 +24,12 @@ public abstract class CommandBase extends Command {
     	OI.init();
     	
 //    Initialize subsystems here
-        driveTrain = driveTrain.getInstance();
+        driveTrain = DriveTrain.getInstance();
         fuelIntake = FuelIntake.getInstance();
-        Shooter = Shooter.getInstance();
-        Climber = Climber.getInstance();
-        GearSubsystem = GearSubsystem.getInstance();
-        Gyro = Gyro.getInstance();
+        Shooter = org.usfirst.frc.team6484.robot.subsystems.Shooter.getInstance();
+        climber = org.usfirst.frc.team6484.robot.subsystems.Climber.getInstance();
+        GearSubsystem = org.usfirst.frc.team6484.robot.subsystems.GearSubsystem.getInstance();
+        Gyro = org.usfirst.frc.team6484.robot.subsystems.Gyro.getInstance();
     }
     
     public CommandBase(String name) {

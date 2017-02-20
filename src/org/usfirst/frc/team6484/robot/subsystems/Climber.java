@@ -33,10 +33,11 @@ public class Climber extends SubsystemBase {
 	 */
 	
 	private static Climber instance;
-	private SpeedController climberMotor1 = new Talon(RobotMap.leftMotor1);
-	private SpeedController climberMotor2 = new Talon(RobotMap.leftMotor2);
+//	private SpeedController climberMotor1 = new Talon(RobotMap.leftMotor1);
+//	private SpeedController climberMotor2 = new Talon(RobotMap.leftMotor2);
 	Solenoid solenoid = new Solenoid(RobotMap.ClimberMain);
-	DoubleSolenoid lockSolenoid = new DoubleSolenoid(RobotMap.ClimberLatchF, RobotMap.ClimberLatchB);
+//	DoubleSolenoid lockSolenoid = new DoubleSolenoid(RobotMap.ClimberLatchF, RobotMap.ClimberLatchB);
+	Solenoid lockSolenoid = new Solenoid(RobotMap.ClimberLatchF);
 	public boolean ClimberMode = false;
 
 	// Put methods for controlling this subsystem
@@ -49,19 +50,19 @@ public class Climber extends SubsystemBase {
 		return instance;
 	}
 
-	public void setClimberMotor(double speed) {
+//	public void setClimberMotor(double speed) {
+//
+//		climberMotor1.set(speed);
+//		climberMotor2.set(speed);
+//	}
 
-		climberMotor1.set(speed);
-		climberMotor2.set(speed);
-	}
-
-	public boolean getMotor() {
-		if (climberMotor1.get() != 0.0 || climberMotor2.get() != 0.0) {
-			return true;
-		} else {
-			return false;
-		}
-	}
+//	public boolean getMotor() {
+//		if (climberMotor1.get() != 0.0 || climberMotor2.get() != 0.0) {
+//			return true;
+//		} else {
+//			return false;
+//		}
+//	}
 	public void openSolenoid(){
 		solenoid.set(true);
 	}
@@ -69,10 +70,12 @@ public class Climber extends SubsystemBase {
 		solenoid.set(false);
 	}
 	public void lockPin(){
-		lockSolenoid.set(DoubleSolenoid.Value.kForward);
+//		lockSolenoid.set(DoubleSolenoid.Value.kReverse);
+		lockSolenoid.set(true);
 	}
 	public void unLockPin(){
-		lockSolenoid.set(DoubleSolenoid.Value.kReverse);
+//		lockSolenoid.set(DoubleSolenoid.Value.kOff);
+		lockSolenoid.set(false);
 	}
 	protected void initialize() {
 	}

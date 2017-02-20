@@ -31,7 +31,7 @@ public class Gear extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (OI.shooterStick.isAButtonPressed()) {
+    	if (OI.shooterStick.isBButtonPressed()) {
     		if (isExtended) {
     			GearSubsystem.releaseGear();
     			isExtended = false;
@@ -42,7 +42,7 @@ public class Gear extends CommandBase {
     			Timer.delay(.5);
     		}
     	}
-    	if(OI.shooterStick.isBButtonPressed()) {
+    	if(OI.shooterStick.isAButtonPressed()) {
     		if (isDown) {
     			GearSubsystem.liftUpArm();
     			isDown = false;

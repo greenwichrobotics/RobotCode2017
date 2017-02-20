@@ -30,7 +30,7 @@ import org.usfirst.frc.team6484.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+
 	public static OI oi;
 	Compressor c = new Compressor(RobotMap.CompressorPort);
 
@@ -54,7 +54,7 @@ public class Robot extends IterativeRobot {
 		SmartDashboard.putData("Auto mode", chooser);
 		
 		// Start Compressor
-		c.setClosedLoopControl(true);
+//		c.setClosedLoopControl(true);
 		
 //		CameraServer.getInstance().startAutomaticCapture();
 		System.out.println("hello");
@@ -122,8 +122,11 @@ public class Robot extends IterativeRobot {
 //		if (myTeleopDrive != null)
 //			myTeleopDrive.start();
 		 Scheduler.getInstance().add(new ArcadeDrive());
-//		 Scheduler.getInstance().add(new shooter());
-//		 Scheduler.getInstance().add(new intakeToggle());
+		 Scheduler.getInstance().add(new shooter());
+		 Scheduler.getInstance().add(new intakeToggle());
+//		 Scheduler.getInstance().add(new climber());
+		 Scheduler.getInstance().add(new Gear());
+//		 c.setClosedLoopControl(false);
 		
 	}
 

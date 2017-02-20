@@ -28,7 +28,7 @@ public class FuelIntake extends SubsystemBase {
 
 	public void setMotor(double speed) {
 
-		intakeMotor1.set(speed);
+		intakeMotor1.set(-speed);
 		intakeMotor2.set(speed);
 
 	}

@@ -35,7 +35,21 @@ public class shooter extends CommandBase {
 //    			Shooter.setFeederMotor(1.0);
 //    			Timer.delay(.2);
 //    			Shooter.setFeederMotor(0.0);
+    		if (OI.shooterStick.getRightTrigger() >= .5){
+    			
+    			Shooter.setFeederMotor(1.0);
+    			Timer.delay(.6);
+    			Shooter.setFeederMotor(0.0);
+    			Timer.delay(.2);
+    		}
 //    }
+//    		if (OI.shooterStick.getRightTrigger() >= .5){
+//    			
+//    			Shooter.setFeederMotor(1.0);
+//    			Timer.delay(.2);
+//    			Shooter.setFeederMotor(0.0);
+//    			Timer.delay(.2);
+//    		}
     }
 
     // Make this return true when this Command no longer needs to run execute()

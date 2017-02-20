@@ -30,13 +30,13 @@ public class ArcadeDrive extends CommandBase {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
 //    	driveTrain.arcadeDrive(OI.driveStick.getY(), -OI.driveStick.getX());
-    	if (OI.driveStick.getX() == 0.0){
-    		direction = (int) Math.copySign(1, OI.driveStick.getTriggerValue());
-    		turn = Gyro.getCompensation(0.0, direction);
-    	}else{
-    		turn = -OI.driveStick.getLeftStickX();
-    	}
-	    driveTrain.arcadeDrive(OI.driveStick.getTriggerValue(), turn);	
+//    	if (OI.driveStick.getX() == 0.0){
+//    		direction = (int) Math.copySign(1, OI.driveStick.getTriggerValue());
+//    		turn = Gyro.getCompensation(0.0, direction);
+//    	}else{
+//    		turn = -OI.driveStick.getLeftStickX();
+//    	}
+	    driveTrain.arcadeDrive(OI.driveStick.getTriggerValue(), -OI.driveStick.getLeftStickX());	
 //    	System.out.println(OI.driveStick.getTriggerValue());
     }
 
