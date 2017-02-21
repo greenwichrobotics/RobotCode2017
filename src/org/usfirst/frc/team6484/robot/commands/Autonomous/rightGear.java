@@ -15,7 +15,7 @@ public class rightGear extends CommandBase {
     public rightGear() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-		requires((Subsystem) Gyro);
+		requires((Subsystem) vision);
 		requires((Subsystem) driveTrain);
     }
 
@@ -35,13 +35,13 @@ public class rightGear extends CommandBase {
     protected void execute() {
 		time.start();
 		if (time.get() <= 2){
-		driveTrain.arcadeDrive(0.2, Gyro.getCompensation(0.0, 1));
+//		driveTrain.arcadeDrive(0.2, Gyro.getCompensation(0.0, 1));
 		} else if(time.get() > 2){
-			driveTrain.arcadeDrive(0.0, Gyro.getCompensation(-30.0, 1));
-			if (Gyro.isCorrect(-30.0)){
-//				vison.track
-				isFinished = true;
-			}
+//			driveTrain.arcadeDrive(0.0, Gyro.getCompensation(-30.0, 1));
+//			if (Gyro.isCorrect(-30.0)){
+////				vison.track
+//				isFinished = true;
+//			}
 
 		}
     }

@@ -15,7 +15,7 @@ public class centerGear extends CommandBase {
 	public centerGear() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		requires((Subsystem) Gyro);
+		requires((Subsystem) vision);
 		requires((Subsystem) driveTrain);
 	}
 
@@ -35,10 +35,10 @@ public class centerGear extends CommandBase {
 	protected void execute() {
 		time.start();
 		if (time.get() <= 2){
-		driveTrain.arcadeDrive(0.2, Gyro.getCompensation(0.0, 1));
+//		driveTrain.arcadeDrive(0.2, Gyro.getCompensation(0.0, 1));
 		} else{
 //			vison.track
-			isFinished = Gyro.isCorrect(0.0);
+//			isFinished = Gyro.isCorrect(0.0);
 		}
 	}
 
