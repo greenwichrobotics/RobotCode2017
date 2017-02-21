@@ -35,7 +35,8 @@ public class centerGear extends CommandBase {
 	protected void execute() {
 		time.start();
 		if (time.get() <= 2){
-		driveTrain.arcadeDrive(0.2, Gyro.getCompensation(0.0, 1));
+		//driveTrain.arcadeDrive(0.2, Gyro.getCompensation(0.0, 1));
+		System.out.print(Gyro.getCompensation(0.0, 1));
 		} else{
 //			vison.track
 			isFinished = Gyro.isCorrect(0.0);
