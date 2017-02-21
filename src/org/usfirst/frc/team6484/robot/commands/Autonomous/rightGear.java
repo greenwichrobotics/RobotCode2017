@@ -33,29 +33,17 @@ public class rightGear extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-<<<<<<< HEAD
 		time.start();
 		if (time.get() <= 2){
 //		driveTrain.arcadeDrive(0.2, Gyro.getCompensation(0.0, 1));
 		} else if(time.get() > 2){
-=======
-//		time.start();
-//		if (time.get() <= 2){
-//		driveTrain.arcadeDrive(0.2, Gyro.getCompensation(0.0, 1));
-//		} else if(time.get() > 2){
->>>>>>> 5b7597a322d37b68ffcaef708fc62f5263259254
 //			driveTrain.arcadeDrive(0.0, Gyro.getCompensation(-30.0, 1));
 //			if (Gyro.isCorrect(-30.0)){
 ////				vison.track
 //				isFinished = true;
 //			}
-<<<<<<< HEAD
 
 		}
-=======
-//
-//		}
->>>>>>> 5b7597a322d37b68ffcaef708fc62f5263259254
     }
 
     // Make this return true when this Command no longer needs to run execute()
