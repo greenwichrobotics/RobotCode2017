@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class centerGear extends CommandBase {
 	Timer time;
 	boolean isFinished;
+
 	public centerGear() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -25,7 +26,7 @@ public class centerGear extends CommandBase {
 			isFinished = false;
 			// isRunning = false;
 			time = new Timer();
-			driveTrain.arcadeDrive(0.0, 0.0);
+			driveTrain.tankDrive(0.0, 0.0);
 		} catch (Exception ex) {
 			String temp = ex.getMessage();
 		}
@@ -34,17 +35,15 @@ public class centerGear extends CommandBase {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		time.start();
-		if (time.get() <= 2){
-<<<<<<< HEAD
-//		driveTrain.arcadeDrive(0.2, Gyro.getCompensation(0.0, 1));
-=======
-		//driveTrain.arcadeDrive(0.2, Gyro.getCompensation(0.0, 1));
-			driveTrain.tankDrive(.3, .2);
-//		System.out.print(Gyro.getCompensation(0.0, 1));
->>>>>>> 5b7597a322d37b68ffcaef708fc62f5263259254
-		} else{
-//			vison.track
-//			isFinished = Gyro.isCorrect(0.0);
+		if (time.get() <= 2) {
+		} else {
+			if (vision.getX() > 150){
+				driveTrain.tankDrive(.1, 0.0);
+			}
+			if (vision.getX() < 150 ){
+				driveTrain.tankDrive(0.0, .1);
+			}
+			// isFinished = Gyro.isCorrect(0.0);
 		}
 	}
 
