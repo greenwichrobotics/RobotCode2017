@@ -12,6 +12,7 @@ public class climber extends CommandBase {
 	private boolean isRunning;
 	private boolean transformed;
 	private boolean locked;
+	private boolean noRun = false;
 
 	public climber() {
 		// Use requires() here to declare subsystem dependencies
@@ -26,6 +27,8 @@ public class climber extends CommandBase {
 			transformed = false;
 			isRunning = false;
 			locked = false;
+			climber.closeSolenoid();
+			climber.unLockPin();
 			// driveTrain.tankDrive(0.0, 0.0);
 		} catch (Exception ex) {
 			String temp = ex.getMessage();
@@ -36,29 +39,34 @@ public class climber extends CommandBase {
 	protected void execute() {
 		// Lift Robot Up
 		if (OI.driveStick.isAButtonPressed()) {
-			if (transformed) {
-				climber.closeSolenoid();
-				transformed = false;
-				Timer.delay(.5);
-			} else {
-				climber.openSolenoid();
-				transformed = true;
-				Timer.delay(.5);
+			if (climber.getClimberMode()) {
+				if (transformed) {
+					climber.closeSolenoid();
+					transformed = false;
+					Timer.delay(.5);
+				} else {
+					climber.openSolenoid();
+					transformed = true;
+					Timer.delay(.5);
+				}
 			}
 		}
 		// Start Climbing
 		if (OI.driveStick.isBButtonPressed()) {
 			if (climber.getClimberMode()) {
-				if (!isRunning) {
-					driveTrain.tankDrive(0.3, 0.0);
+				if (!isRunning && !noRun) {
+					// driveTrain.tankDrive(0.0, 0.5);
 					isRunning = true;
 					Timer.delay(.5);
 				} else {
-					driveTrain.tankDrive(0.0, 0.0);
+					// driveTrain.tankDrive(0.0, 0.0);
 					isRunning = false;
 					Timer.delay(.5);
 				}
 			}
+		}
+		if (isRunning && climber.getClimberMode()) {
+			driveTrain.tankDrive(0.0, 0.5);
 		}
 		// Lock Pin
 		if (OI.driveStick.isXButtonPressed()) {
@@ -66,17 +74,25 @@ public class climber extends CommandBase {
 				if (locked) {
 					climber.unLockPin();
 					locked = false;
+					noRun = false;
 					Timer.delay(.5);
 				} else {
 					climber.lockPin();
 					locked = true;
+					isRunning = false;
+					noRun = true;
 					Timer.delay(.5);
 				}
 			}
 		}
 		if (OI.driveStick.isStartButtonPressed()) {
-			boolean isTrue = climber.getClimberMode();
-			climber.setClimberMode(!isTrue);
+			if (climber.getClimberMode()) {
+				climber.setClimberMode(false);
+				Timer.delay(.5);
+			} else {
+				climber.setClimberMode(true);
+				Timer.delay(.5);
+			}
 		}
 	}
 

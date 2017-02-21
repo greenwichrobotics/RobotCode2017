@@ -39,7 +39,7 @@ public class shooter extends CommandBase {
     			
     			Shooter.setFeederMotor(1.0);
     			Timer.delay(.6);
-    			Shooter.setFeederMotor(0.0);
+    			Shooter.setFeederMotor(0.0); 
     			Timer.delay(.2);
     		}
 //    }

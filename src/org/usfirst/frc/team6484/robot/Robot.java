@@ -121,10 +121,11 @@ public class Robot extends IterativeRobot {
 			autonomousCommand.cancel();
 //		if (myTeleopDrive != null)
 //			myTeleopDrive.start();
+//		 Scheduler.getInstance().add(new climber());
 		 Scheduler.getInstance().add(new ArcadeDrive());
 		 Scheduler.getInstance().add(new shooter());
 		 Scheduler.getInstance().add(new intakeToggle());
-//		 Scheduler.getInstance().add(new climber());
+
 		 Scheduler.getInstance().add(new Gear());
 //		 c.setClosedLoopControl(false);
 		

@@ -48,6 +48,12 @@ public class RobotMap {
 	 public static final double kP = 0.007;// propotional turning constant
 	 
 	// *********************************************************
+	// Ultrasonic sensor
+	 public static final int kUltrasonicPort = 0;
+	 public static final double kHoldDistance = 12.0;
+	 public static final double kValueToInches = 0.125;
+	 
+	// *********************************************************
 	// Pneumatics
 	 
 	 public static final int CompressorPort = 0,
