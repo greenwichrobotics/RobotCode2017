@@ -80,7 +80,7 @@ public class Climber extends SubsystemBase {
 	protected void initialize() {
 	}
 	public void setClimberMode(boolean isTrue){
-		ClimberMode = true;
+		ClimberMode = isTrue;
 	}
 	public boolean getClimberMode(){
 		return ClimberMode;
