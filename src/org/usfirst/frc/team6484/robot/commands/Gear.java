@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class Gear extends CommandBase {
 	private boolean isDown;
 	private boolean isExtended;
+	private boolean toggleB;
+	private boolean toggleA;
 
     public Gear() {
         // Use requires() here to declare subsystem dependencies
@@ -24,6 +26,8 @@ public class Gear extends CommandBase {
     	try {
     		isExtended = false;
     		isDown = false;
+    		toggleB = true;
+    		toggleA = true;
     	} catch (Exception ex) {
     		String temp = ex.getMessage();
     	}
@@ -31,27 +35,28 @@ public class Gear extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if (OI.shooterStick.isBButtonPressed()) {
+    	if (toggleB && OI.shooterStick.isBButtonPressed()) {
+    		toggleB = false;
     		if (isExtended) {
     			GearSubsystem.releaseGear();
     			isExtended = false;
-    			Timer.delay(.5);
     		} else {
     			GearSubsystem.grabGear();
     			isExtended = true;
-    			Timer.delay(.5);
     		}
+    	}else if (!OI.shooterStick.isBButtonPressed()){
+    		toggleB = false;
     	}
-    	if(OI.shooterStick.isAButtonPressed()) {
+    	if(toggleA && OI.shooterStick.isAButtonPressed()) {
     		if (isDown) {
     			GearSubsystem.liftUpArm();
     			isDown = false;
-    			Timer.delay(.5);
     		} else {
     			GearSubsystem.putDownArm();
     			isDown = true;
-    			Timer.delay(.5);
     		}
+    	}else if (!OI.shooterStick.isAButtonPressed()){
+    		toggleB = true;
     	}
     }
     // Make this return true when this Command no longer needs to run execute()

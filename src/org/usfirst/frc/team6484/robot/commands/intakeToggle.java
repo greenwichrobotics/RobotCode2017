@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  */
 public class intakeToggle extends CommandBase {
 	private boolean isRunning;
+	private boolean toggleY;
 
 	public intakeToggle() {
 		// Use requires() here to declare subsystem dependencies
@@ -23,6 +24,7 @@ public class intakeToggle extends CommandBase {
 		try {
 			isRunning = false;
 			fuelIntake.setMotor(0.0);
+			toggleY = true;
 		} catch (Exception ex) {
 			String temp = ex.getMessage();
 		}
@@ -30,16 +32,17 @@ public class intakeToggle extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (OI.shooterStick.isYButtonPressed()) {
+		if (toggleY && OI.shooterStick.isYButtonPressed()) {
+			toggleY = false;
 			if (!isRunning) {
 				fuelIntake.setMotor(1.0);
 				isRunning = true;
-				Timer.delay(.5);
 			} else {
 				fuelIntake.setMotor(0.0);
 				isRunning = false;
-				Timer.delay(.5);
 			}
+		}else if (!OI.shooterStick.isYButtonPressed()){
+			toggleY = true;
 		}
 
 	}

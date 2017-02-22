@@ -16,8 +16,11 @@ public class ArcadeDrive extends CommandBase {
 	private boolean isRunning;
 	private boolean transformed;
 	private boolean locked;
-	private boolean noRun = false;
-
+	private boolean toggleStart = true;
+	private boolean toggleA;
+	private boolean toggleB;
+	private boolean toggleX;
+	private boolean noRun;
 	public ArcadeDrive() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
@@ -32,6 +35,10 @@ public class ArcadeDrive extends CommandBase {
 			transformed = false;
 			isRunning = false;
 			locked = false;
+			toggleStart = true;
+			toggleB = true;
+			toggleX = true;
+			noRun = false;
 			climber.closeSolenoid();
 			climber.unLockPin();
 			driveTrain.arcadeDrive(0.0, 0.0);
@@ -49,63 +56,68 @@ public class ArcadeDrive extends CommandBase {
 		// }else{
 		// turn = -OI.driveStick.getLeftStickX();
 		// }
-		if (OI.driveStick.isStartButtonPressed()) {
+		if (toggleStart && OI.driveStick.isStartButtonPressed()) {
+			toggleStart = false;
 			if (climber.getClimberMode()) {
 				climber.setClimberMode(false);
-				Timer.delay(.5);
 			} else {
 				climber.setClimberMode(true);
-				Timer.delay(.5);
 			}
+		}else if (!OI.driveStick.isStartButtonPressed()){
+			toggleStart = true;
 		}
 
 		if (!climber.getClimberMode()) {
-			driveTrain.arcadeDrive(OI.driveStick.getTriggerValue(), -OI.driveStick.getLeftStickX());
+			driveTrain.arcadeDrive(OI.driveStick.getTriggerValue(), (-OI.driveStick.getLeftStickX()/2));
 		} else {
 			// System.out.println(OI.driveStick.getTriggerValue());
 
 			// Lift Robot Up
-			if (OI.driveStick.isAButtonPressed()) {
+			if (toggleA && OI.driveStick.isAButtonPressed()) {
+				toggleA = false;
 				if (transformed) {
 					climber.closeSolenoid();
 					transformed = false;
-					Timer.delay(.5);
 				} else {
 					climber.openSolenoid();
 					transformed = true;
-					Timer.delay(.5);
 				}
 
+			}else if (!OI.driveStick.isAButtonPressed()){
+				toggleA = true;
 			}
 			// Start Climbing
-			if (OI.driveStick.isBButtonPressed()) {
+			if (toggleB && OI.driveStick.isBButtonPressed()) {
+				toggleB = false;
 				if (!isRunning && !noRun) {
 					// driveTrain.tankDrive(0.0, 0.5);
 					isRunning = true;
-					Timer.delay(.5);
 				} else {
 					// driveTrain.tankDrive(0.0, 0.0);
 					isRunning = false;
-					Timer.delay(.5);
 				}
+			}else if (!OI.driveStick.isBButtonPressed()){
+				toggleB = true;
 			}
+			
 			if (isRunning && climber.getClimberMode()) {
 				driveTrain.tankDrive(0.0, 0.7);
 			}
 			// Lock Pin
-			if (OI.driveStick.isXButtonPressed()) {
+			if (toggleX && OI.driveStick.isXButtonPressed()) {
+				toggleX = false;
 				if (locked) {
 					climber.unLockPin();
 					locked = false;
 					noRun = false;
-					Timer.delay(.5);
 				} else {
 					climber.lockPin();
 					locked = true;
 					isRunning = false;
 					noRun = true;
-					Timer.delay(.5);
 				}
+			}else if (!OI.driveStick.isXButtonPressed()){
+				toggleX = true;
 			}
 		}
 	}
