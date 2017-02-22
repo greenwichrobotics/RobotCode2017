@@ -23,7 +23,7 @@ public class ArcadeDrive extends CommandBase {
 		// eg. requires(chassis);
 		requires((Subsystem) driveTrain);
 		requires((Subsystem) climber);
-		requires((Subsystem) Gyro);
+//		requires((Subsystem) Gyro);
 	}
 
 	// Called just before this Command runs the first time

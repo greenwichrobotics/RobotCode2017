@@ -25,7 +25,9 @@ public class leftGear extends CommandBase {
 			isFinished = false;
 			// isRunning = false;
 			time = new Timer();
+			time.start();
 			driveTrain.arcadeDrive(0.0, 0.0);
+			GearSubsystem.grabGear();
 		} catch (Exception ex) {
 			String temp = ex.getMessage();
 		}
@@ -33,16 +35,19 @@ public class leftGear extends CommandBase {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-		time.start();
-		if (time.get() <= 2){
-//		driveTrain.arcadeDrive(0.2, Gyro.getCompensation(0.0, 1));
-		} else if(time.get() > 2){
-//			driveTrain.arcadeDrive(0.0, Gyro.getCompensation(30.0, 1));
-//			if (Gyro.isCorrect(30.0)){
-////				vison.track
-//				isFinished = true;
-//			}
-
+		if (time.get() <= 4.5) {
+//			System.out.println("Running");
+			driveTrain.tankDrive(-0.55, -0.5);
+		} else if (time.get() > 8.0 && time.get() < 10.0){
+			driveTrain.tankDrive(0.4, -0.4);
+		} else if (time.get() > 13.0 && time.get() < 15.0){
+			driveTrain.tankDrive(-0.55, -0.5);
+		} else if (time.get() > 16.0 && time.get() < 17.0){
+			GearSubsystem.releaseGear();
+//		}else if (time.get() > 8.0 && time.get() < 9.0){
+//			driveTrain.tankDrive(0.5, 0.55);
+		}else{
+			driveTrain.tankDrive(0.0, 0.0);
 		}
     }
 

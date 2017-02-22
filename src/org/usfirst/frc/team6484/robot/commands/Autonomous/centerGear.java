@@ -18,6 +18,7 @@ public class centerGear extends CommandBase {
 		// eg. requires(chassis);
 		requires((Subsystem) vision);
 		requires((Subsystem) driveTrain);
+		requires((Subsystem) GearSubsystem);
 	}
 
 	// Called just before this Command runs the first time
@@ -27,6 +28,8 @@ public class centerGear extends CommandBase {
 			// isRunning = false;
 			time = new Timer();
 			driveTrain.tankDrive(0.0, 0.0);
+			GearSubsystem.grabGear();
+			time.start();
 		} catch (Exception ex) {
 			String temp = ex.getMessage();
 		}
@@ -34,16 +37,15 @@ public class centerGear extends CommandBase {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		time.start();
-		if (time.get() <= 2) {
-		} else {
-			if (vision.getX() > 150){
-				driveTrain.tankDrive(.1, 0.0);
-			}
-			if (vision.getX() < 150 ){
-				driveTrain.tankDrive(0.0, .1);
-			}
-			// isFinished = Gyro.isCorrect(0.0);
+
+//		System.out.println(time.get());
+		if (time.get() <= 4.5) {
+//			System.out.println("Running");
+			driveTrain.tankDrive(-0.55, -0.5);
+		} else if (time.get() > 5.0 && time.get() < 6.0){
+			GearSubsystem.releaseGear();
+		}else if (time.get() > 6.0 && time.get() < 8.0){
+			driveTrain.tankDrive(0.5, 0.55);
 		}
 	}
 

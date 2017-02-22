@@ -32,7 +32,7 @@ public class Robot extends IterativeRobot {
 
 
 	public static OI oi;
-	Compressor c = new Compressor(RobotMap.CompressorPort);
+//	Compressor c = new Compressor(RobotMap.CompressorPort);
 
 	Command autonomousCommand;
 	SendableChooser<Command> chooser = new SendableChooser<>();
@@ -67,12 +67,13 @@ public class Robot extends IterativeRobot {
 	 */
 	@Override
 	public void disabledInit() {
-		
+//		c.setClosedLoopControl(true);
 
 	}
 
 	@Override
 	public void disabledPeriodic() {
+//		c.setClosedLoopControl(true);
 		Scheduler.getInstance().run();
 	}
 
