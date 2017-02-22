@@ -68,7 +68,7 @@ public class ArcadeDrive extends CommandBase {
 		}
 
 		if (!climber.getClimberMode()) {
-			driveTrain.arcadeDrive(OI.driveStick.getTriggerValue(), (-OI.driveStick.getLeftStickX()/2));
+			driveTrain.arcadeDrive(OI.driveStick.getTriggerValue(), (-OI.driveStick.getLeftStickX()/1.25));
 		} else {
 			// System.out.println(OI.driveStick.getTriggerValue());
 

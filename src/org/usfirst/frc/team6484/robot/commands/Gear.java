@@ -28,6 +28,7 @@ public class Gear extends CommandBase {
     		isDown = false;
     		toggleB = true;
     		toggleA = true;
+//    		GearSubsystem.releaseGear();
     	} catch (Exception ex) {
     		String temp = ex.getMessage();
     	}
@@ -45,9 +46,10 @@ public class Gear extends CommandBase {
     			isExtended = true;
     		}
     	}else if (!OI.shooterStick.isBButtonPressed()){
-    		toggleB = false;
+    		toggleB = true;
     	}
     	if(toggleA && OI.shooterStick.isAButtonPressed()) {
+    		toggleA = false;
     		if (isDown) {
     			GearSubsystem.liftUpArm();
     			isDown = false;
@@ -56,7 +58,7 @@ public class Gear extends CommandBase {
     			isDown = true;
     		}
     	}else if (!OI.shooterStick.isAButtonPressed()){
-    		toggleB = true;
+    		toggleA = true;
     	}
     }
     // Make this return true when this Command no longer needs to run execute()

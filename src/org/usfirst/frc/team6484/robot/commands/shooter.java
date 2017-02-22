@@ -10,6 +10,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  *
  */
 public class shooter extends CommandBase {
+	Timer time = new Timer();
 	public shooter() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -20,6 +21,8 @@ public class shooter extends CommandBase {
     protected void initialize() {
     	try{
     		Shooter.setShooterMotor(0.0);
+    		Timer time = new Timer();
+			time.start();
     		}catch(Exception ex){
     			String temp = ex.getMessage();
     	}
@@ -36,11 +39,17 @@ public class shooter extends CommandBase {
 //    			Timer.delay(.2);
 //    			Shooter.setFeederMotor(0.0);
     		if (OI.shooterStick.getRightTrigger() >= .5){
-    			
     			Shooter.setFeederMotor(1.0);
-    			Timer.delay(.6);
-    			Shooter.setFeederMotor(0.0); 
-    			Timer.delay(.2);
+//    			if (time.get() < 0.6)
+//    				Shooter.setFeederMotor(1.0);
+//    			else if (time.get() > 0.6 && time.get() < 0.8)
+//    				Shooter.setFeederMotor(0.0); 
+//    			else if(time.get() > 0.8){
+//    				Shooter.setFeederMotor(0.0); 
+//    				time.reset();
+//    			}
+    		}else{
+    			Shooter.setFeederMotor(0.0);
     		}
 //    }
 //    		if (OI.shooterStick.getRightTrigger() >= .5){
