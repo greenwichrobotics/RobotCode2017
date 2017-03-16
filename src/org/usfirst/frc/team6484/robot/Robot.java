@@ -48,11 +48,12 @@ public class Robot extends IterativeRobot {
 		CommandBase.init();
 		
 		// chooser.addObject("My Auto", new MyAutoCommand())
-		chooser.addDefault("Center Gear", new centerGear());
+		chooser.addDefault("Nothing", null);
+		chooser.addObject("Center Gear", new centerGear());
 		chooser.addObject("Left Gear", new leftGear());
 		chooser.addObject("Right Gear", new rightGear());
 		SmartDashboard.putData("Auto mode", chooser);
-		
+		CameraServer.getInstance().startAutomaticCapture();
 		// Start Compressor
 //		c.setClosedLoopControl(true);
 		
