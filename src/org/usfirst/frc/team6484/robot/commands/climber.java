@@ -4,6 +4,7 @@ import org.usfirst.frc.team6484.robot.OI;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -94,6 +95,7 @@ public class climber extends CommandBase {
 				Timer.delay(.5);
 			}
 		}
+		SmartDashboard.putBoolean("ClimberMode", climber.getClimberMode());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

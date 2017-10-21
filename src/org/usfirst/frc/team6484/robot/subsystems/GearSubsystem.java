@@ -37,10 +37,10 @@ public class GearSubsystem extends SubsystemBase {
 	}
 	
 	public void liftUpArm(){
-		GearLift.set(DoubleSolenoid.Value.kForward);
+		GearLift.set(DoubleSolenoid.Value.kReverse);
 	}
 	public void putDownArm(){
-		GearLift.set(DoubleSolenoid.Value.kReverse);
+		GearLift.set(DoubleSolenoid.Value.kForward);
 	}
 	public void grabGear(){
 		GearGrab.set(DoubleSolenoid.Value.kForward);

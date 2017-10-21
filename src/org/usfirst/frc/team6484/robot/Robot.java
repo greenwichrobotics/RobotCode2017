@@ -13,6 +13,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team6484.robot.commands.*;
+import org.usfirst.frc.team6484.robot.commands.Autonomous.Baseline;
 import org.usfirst.frc.team6484.robot.commands.Autonomous.centerGear;
 import org.usfirst.frc.team6484.robot.commands.Autonomous.leftGear;
 import org.usfirst.frc.team6484.robot.commands.Autonomous.rightGear;
@@ -52,6 +53,7 @@ public class Robot extends IterativeRobot {
 		chooser.addObject("Center Gear", new centerGear());
 		chooser.addObject("Left Gear", new leftGear());
 		chooser.addObject("Right Gear", new rightGear());
+		chooser.addObject("Baseline", new Baseline());
 		SmartDashboard.putData("Auto mode", chooser);
 		CameraServer.getInstance().startAutomaticCapture();
 		// Start Compressor

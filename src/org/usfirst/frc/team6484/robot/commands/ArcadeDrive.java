@@ -5,6 +5,7 @@ import org.usfirst.frc.team6484.robot.OI;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -101,7 +102,7 @@ public class ArcadeDrive extends CommandBase {
 			}
 			
 			if (isRunning && climber.getClimberMode()) {
-				driveTrain.tankDrive(0.0, 0.7);
+				driveTrain.tankDrive(0.0, 0.5);
 			}
 			// Lock Pin
 			if (toggleX && OI.driveStick.isXButtonPressed()) {
@@ -119,7 +120,9 @@ public class ArcadeDrive extends CommandBase {
 			}else if (!OI.driveStick.isXButtonPressed()){
 				toggleX = true;
 			}
+			
 		}
+		SmartDashboard.putBoolean("ClimberMode", climber.getClimberMode());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()

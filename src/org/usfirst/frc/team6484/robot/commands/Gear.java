@@ -5,6 +5,7 @@ import org.usfirst.frc.team6484.robot.OI;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -38,7 +39,13 @@ public class Gear extends CommandBase {
     protected void execute() {
     	if (toggleB && OI.shooterStick.isBButtonPressed()) {
     		toggleB = false;
-    		if (isExtended) {
+    		if (isExtended && !isDown) {
+    			GearSubsystem.releaseGear();
+    			GearSubsystem.putDownArm();
+    			Timer.delay(0.2);
+    			GearSubsystem.liftUpArm();
+    			isExtended = false;
+    		}else if (isExtended) {
     			GearSubsystem.releaseGear();
     			isExtended = false;
     		} else {
@@ -60,6 +67,7 @@ public class Gear extends CommandBase {
     	}else if (!OI.shooterStick.isAButtonPressed()){
     		toggleA = true;
     	}
+    SmartDashboard.putBoolean("Pin", isExtended);
     }
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
